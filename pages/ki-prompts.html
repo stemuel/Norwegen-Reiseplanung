@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KI-Prompt-Liste – Norwegen 2026</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="ki-prompts">
+
+  <header class="mobile-header">
+    <button class="hamburger" id="menuBtn" aria-label="Navigation öffnen">☰</button>
+    <span class="mobile-header-title">KI-Prompt-Liste</span>
+  </header>
+
+  <div class="app">
+    <nav class="sidebar" id="sidebar" aria-label="Stopp-Navigation"></nav>
+    <div class="overlay" id="overlay" aria-hidden="true"></div>
+
+    <main class="main">
+
+      <div class="page-hero">
+        <a href="../index.html" class="back-link">← Zur Übersicht</a>
+        <div class="page-hero-meta">Reiseinfos &nbsp;·&nbsp; Norwegen 2026</div>
+        <h1 class="page-hero-title">🤖 Master KI-Prompt-Liste</h1>
+        <p class="page-hero-subtitle">Prompts für unterwegs &nbsp;·&nbsp; Vor Ort in Claude oder ChatGPT eingeben</p>
+      </div>
+
+      <div class="section-tabs">
+        <a href="#allgemein" class="section-tab">💡 Allgemein</a>
+        <a href="#stopps" class="section-tab">📍 Stopp für Stopp</a>
+        <a href="#norwegisch" class="section-tab">🇳🇴 Auf Norwegisch</a>
+        <a href="#quellen" class="section-tab">🔗 Quellen</a>
+      </div>
+
+      <div class="page-sections">
+
+        <!-- ── Allgemeine Prompts ── -->
+        <details class="accordion" id="allgemein" open>
+          <summary>
+            <span class="accordion-icon">💡</span>
+            <span class="accordion-title">Allgemeine Prompts (für jeden Ort)</span>
+            <span class="accordion-chevron">›</span>
+          </summary>
+          <div class="accordion-body">
+            <p class="poi-desc" style="margin-bottom: 16px;">
+              Ersetze <code>[Ort]</code> jeweils durch den aktuellen Stopp:
+            </p>
+
+            <div class="ki-box">
+              <p class="ki-box-label">🔍 Geheimtipps & Einheimische</p>
+              <span class="ki-prompt">"[Ort] Geheimtipps abseits Touristenmassen 2026"</span>
+              <span class="ki-prompt">"[Ort] was Einheimische empfehlen"</span>
+              <span class="ki-prompt">"[Ort] lokale Restaurants Einheimische"</span>
+              <span class="ki-prompt">"[Ort] kostenlose Aktivitäten August"</span>
+            </div>
+
+            <div class="ki-box" style="margin-top: 12px;">
+              <p class="ki-box-label">🥾 Wanderungen & Natur</p>
+              <span class="ki-prompt">"[Ort] Wanderung leicht Familie Tipps"</span>
+              <span class="ki-prompt">"[Ort] Wanderweg Erfahrungsbericht"</span>
+              <span class="ki-prompt">"[Ort] Natur Abseits Touristenrouten"</span>
+            </div>
+
+            <div class="ki-box" style="margin-top: 12px;">
+              <p class="ki-box-label">🍽️ Essen & Trinken</p>
+              <span class="ki-prompt">"[Ort] lokale Spezialitäten günstig"</span>
+              <span class="ki-prompt">"[Ort] Supermarkt Öffnungszeiten"</span>
+              <span class="ki-prompt">"[Ort] Fischrestaurant Empfehlung 2026"</span>
+            </div>
+
+            <div class="ki-box" style="margin-top: 12px;">
+              <p class="ki-box-label">🏕️ Praktisches</p>
+              <span class="ki-prompt">"[Ort] Campervan Stellplatz freies Campen"</span>
+              <span class="ki-prompt">"[Ort] Campingplatz Empfehlung August"</span>
+              <span class="ki-prompt">"[Ort] Maut AutoPASS Kosten"</span>
+            </div>
+          </div>
+        </details>
+
+        <!-- ── Stopp für Stopp ── -->
+        <details class="accordion" id="stopps">
+          <summary>
+            <span class="accordion-icon">📍</span>
+            <span class="accordion-title">Stopp für Stopp — Spezifische Prompts</span>
+            <span class="accordion-chevron">›</span>
+          </summary>
+          <div class="accordion-body">
+
+            <h3 style="color: var(--primary-dark); margin: 0 0 8px; font-size: 0.95rem;">🇩🇰 Hirtshals</h3>
+            <div class="ki-box">
+              <span class="ki-prompt">"Hirtshals Geheimtipps Sonnenuntergang"</span>
+              <span class="ki-prompt">"Hirtshals things to do before ferry"</span>
+            </div>
+
+            <h3 style="color: var(--primary-dark); margin: 16px 0 8px; font-size: 0.95rem;">🇳🇴 Kristiansand</h3>
+            <div class="ki-box">
+              <span class="ki-prompt">"Kristiansand Geheimtipps 2026"</span>
+              <span class="ki-prompt">"Kristiansand lokale Restaurants abseits Fiskebrygga"</span>
+              <span class="ki-prompt">"Odderøya Wanderung Tipps"</span>
+            </div>
+
+            <h3 style="color: var(--primary-dark); margin: 16px 0 8px; font-size: 0.95rem;">🇳🇴 Lillesand &amp; Arendal</h3>
+            <div class="ki-box">
+              <span class="ki-prompt">"Arendal Merdø Geheimtipps 2026"</span>
+              <span class="ki-prompt">"Lillesand was sehen abseits Touristen"</span>
+              <span class="ki-prompt">"Tromøy Radtour Tipps"</span>
+            </div>
+
+            <h3 style="color: var(--primary-dark); margin: 16px 0 8px; font-size: 0.95rem;">🇳🇴 Stavanger &amp; Lysefjord</h3>
+            <div class="ki-box">
+              <span class="ki-prompt">"Stavanger Geheimtipps abseits Preikestolen 2026"</span>
+              <span class="ki-prompt">"Lysefjord RIB Tour Tipps"</span>
+              <span class="ki-prompt">"Flørli Holztreppe Wanderung Erfahrung"</span>
+              <span class="ki-prompt">"Preikestolen früh morgens Tipps Timing"</span>
+            </div>
+
+            <h3 style="color: var(--primary-dark); margin: 16px 0 8px; font-size: 0.95rem;">🇳🇴 Hardangerfjord</h3>
+            <div class="ki-box">
+              <span class="ki-prompt">"Hardanger Lofthus Geheimtipps 2026"</span>
+              <span class="ki-prompt">"Dronningstien Wanderung Erfahrungsbericht"</span>
+              <span class="ki-prompt">"Cider Hardanger Hofläden Verkostung"</span>
+              <span class="ki-prompt">"H2 Odda Sauna Buchung"</span>
+            </div>
+
+            <h3 style="color: var(--primary-dark); margin: 16px 0 8px; font-size: 0.95rem;">🇳🇴 Bergen</h3>
+            <div class="ki-box">
+              <span class="ki-prompt">"Bergen Geheimtipps abseits Bryggen 2026"</span>
+              <span class="ki-prompt">"Sandviken Bergen Spaziergang Tipps"</span>
+              <span class="ki-prompt">"Bergen lokale Restaurants Einheimische"</span>
+              <span class="ki-prompt">"Baneveien Bergen Weg finden"</span>
+            </div>
+
+            <h3 style="color: var(--primary-dark); margin: 16px 0 8px; font-size: 0.95rem;">🇳🇴 Flåm &amp; Sognefjord</h3>
+            <div class="ki-box">
+              <span class="ki-prompt">"Flåm Geheimtipps abseits Kreuzfahrtschiffe 2026"</span>
+              <span class="ki-prompt">"Lærdalsøyri Sognefjord Tipps"</span>
+              <span class="ki-prompt">"Rallarvägen Fahrrad Erfahrung Tipps"</span>
+              <span class="ki-prompt">"Undredal Ziegenkäse Stabkirche Anfahrt"</span>
+            </div>
+
+            <h3 style="color: var(--primary-dark); margin: 16px 0 8px; font-size: 0.95rem;">🇳🇴 Geiranger</h3>
+            <div class="ki-box">
+              <span class="ki-prompt">"Geirangerfjord Geheimtipps weniger Touristen 2026"</span>
+              <span class="ki-prompt">"Hjørundfjord vs Geirangerfjord Vergleich"</span>
+              <span class="ki-prompt">"Geiranger Wanderwege abseits der Massen"</span>
+              <span class="ki-prompt">"Geiranger Abendtour Boot Buchung"</span>
+            </div>
+
+            <h3 style="color: var(--primary-dark); margin: 16px 0 8px; font-size: 0.95rem;">🇳🇴 Romsdal &amp; Åndalsnes</h3>
+            <div class="ki-box">
+              <span class="ki-prompt">"Trollstigen Öffnungszeiten 2026 aktuell"</span>
+              <span class="ki-prompt">"Romsdalseggen Wanderung Erfahrungsbericht"</span>
+              <span class="ki-prompt">"Åndalsnes Geheimtipps abseits Trollstigen"</span>
+            </div>
+
+            <h3 style="color: var(--primary-dark); margin: 16px 0 8px; font-size: 0.95rem;">🇳🇴 Jotunheimen</h3>
+            <div class="ki-box">
+              <span class="ki-prompt">"Jotunheimen Randgebiet kurze Wanderung"</span>
+              <span class="ki-prompt">"Vinstre See Rastplatz Camper"</span>
+            </div>
+
+            <h3 style="color: var(--primary-dark); margin: 16px 0 8px; font-size: 0.95rem;">🇳🇴 Oslo</h3>
+            <div class="ki-box">
+              <span class="ki-prompt">"Oslo Geheimtipps abseits Vigelandpark 2026"</span>
+              <span class="ki-prompt">"Grünerløkka beste Cafés Locals"</span>
+              <span class="ki-prompt">"Oslo kostenlose Aktivitäten Sommer"</span>
+              <span class="ki-prompt">"Ekebergparken Munch Spot finden"</span>
+            </div>
+
+            <h3 style="color: var(--primary-dark); margin: 16px 0 8px; font-size: 0.95rem;">🇸🇪 Göteborg</h3>
+            <div class="ki-box">
+              <span class="ki-prompt">"Göteborg Geheimtipps kurzer Zwischenstopp"</span>
+              <span class="ki-prompt">"Göteborg Haga bestes Café Zimtschnecken"</span>
+            </div>
+
+          </div>
+        </details>
+
+        <!-- ── Norwegisch-sprachige Quellen ── -->
+        <details class="accordion" id="norwegisch">
+          <summary>
+            <span class="accordion-icon">🇳🇴</span>
+            <span class="accordion-title">Norwegischsprachige Quellen (besonders ergiebig)</span>
+            <span class="accordion-chevron">›</span>
+          </summary>
+          <div class="accordion-body">
+            <p class="poi-desc" style="margin-bottom: 14px;">
+              Norwegische Suchanfragen liefern oft viel lokaler gefilterte Ergebnisse
+              als deutsche oder englische. Claude und ChatGPT verstehen beide Sprachen:
+            </p>
+
+            <div class="ki-box">
+              <p class="ki-box-label">🇳🇴 Auf Norwegisch suchen / fragen</p>
+              <span class="ki-prompt">"[Ort] skjulte perler 2026"</span>
+              <span class="ki-prompt">"[Ort] lokale tips innbyggere"</span>
+              <span class="ki-prompt">"[Ort] beste restaurant lokale"</span>
+              <span class="ki-prompt">"[Ort] hva bør man se 2026"</span>
+            </div>
+
+            <p class="poi-desc" style="margin-top: 14px;">
+              <em>„skjulte perler"</em> bedeutet <strong>„versteckte Perlen"</strong> —
+              ergibt auf Norwegisch oft viel konkretere Geheimtipps als die
+              englische oder deutsche Variante.
+            </p>
+          </div>
+        </details>
+
+        <!-- ── Quellen & Websites ── -->
+        <details class="accordion" id="quellen">
+          <summary>
+            <span class="accordion-icon">🔗</span>
+            <span class="accordion-title">Nützliche Websites für Recherche</span>
+            <span class="accordion-chevron">›</span>
+          </summary>
+          <div class="accordion-body">
+            <div class="poi-list">
+
+              <div class="poi-card">
+                <div class="poi-header">
+                  <h3 class="poi-name">Allgemeines Norwegen</h3>
+                </div>
+                <ul class="info-list">
+                  <li><span class="info-icon">🌐</span><span><strong>visitnorway.de</strong> — Offizielles Tourismusportal mit Insider-Tipps der Region</span></li>
+                  <li><span class="info-icon">🌐</span><span><strong>fjords.com</strong> — Fjordreisen, Aktivitäten, Buchungen</span></li>
+                  <li><span class="info-icon">🌐</span><span><strong>nasjonaleturistveger.no</strong> — Die 18 nationalen Touristenstraßen</span></li>
+                  <li><span class="info-icon">🌐</span><span><strong>norwegianroutes.com</strong> — Routenplanung</span></li>
+                </ul>
+              </div>
+
+              <div class="poi-card">
+                <div class="poi-header">
+                  <h3 class="poi-name">Geheimtipp-Blogs (Deutsch)</h3>
+                </div>
+                <ul class="info-list">
+                  <li><span class="info-icon">📝</span><span><strong>urbanmeanderer.de</strong> — Sehr gute Geheimtipps für Norwegen</span></li>
+                  <li><span class="info-icon">📝</span><span><strong>thenorthtraveller.de</strong> — Skandinavien-Reiseblog, viele Insider-Infos</span></li>
+                  <li><span class="info-icon">📝</span><span><strong>fjordwelten.de</strong> — Fjord-spezifische Reisetipps</span></li>
+                </ul>
+              </div>
+
+              <div class="poi-card">
+                <div class="poi-header">
+                  <h3 class="poi-name">Wanderungen</h3>
+                </div>
+                <ul class="info-list">
+                  <li><span class="info-icon">🥾</span><span><strong>ut.no</strong> — Offizielles norwegisches Wanderportal (GPS-Tracks, Bedingungen)</span></li>
+                  <li><span class="info-icon">🥾</span><span><strong>alltrails.com</strong> — Weltweite Wanderrouten mit Bewertungen</span></li>
+                  <li><span class="info-icon">🥾</span><span><strong>komoot.com</strong> — Routenplanung mit Offline-Karten</span></li>
+                </ul>
+              </div>
+
+              <div class="poi-card">
+                <div class="poi-header">
+                  <h3 class="poi-name">Straße &amp; Wetter</h3>
+                </div>
+                <ul class="info-list">
+                  <li><span class="info-icon">🚗</span><span><strong>vegvesen.no</strong> — Sperrungen, Beschränkungen, Tunnelstatus</span></li>
+                  <li><span class="info-icon">🌦️</span><span><strong>yr.no</strong> — Genaueste Wettervorhersage für Norwegen</span></li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </details>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>
