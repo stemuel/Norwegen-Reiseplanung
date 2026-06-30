@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Essen unterwegs – Norwegen 2026</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .meal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .meal-card {
+      background: var(--bg);
+      border: 1px solid var(--primary-light);
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .meal-card-emoji {
+      font-size: 1.6rem;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .meal-card-name {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+    .meal-card-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    .meal-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 6px;
+    }
+    .meal-tag {
+      font-size: 0.7rem;
+      padding: 2px 7px;
+      border-radius: 20px;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+    .week-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-top: 8px;
+    }
+    .week-table th {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 700;
+      padding: 8px 10px;
+      text-align: left;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .week-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid #edf2f7;
+      vertical-align: top;
+      color: var(--text);
+    }
+    .week-table tr:last-child td { border-bottom: none; }
+    .week-table tr:hover td { background: var(--bg); }
+    .week-table .day-label { font-weight: 600; white-space: nowrap; }
+    .week-table .meal-num {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin-right: 6px;
+      flex-shrink: 0;
+    }
+    .strategy-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .strategy-col {
+      border-radius: 10px;
+      padding: 14px 16px;
+      border: 1px solid;
+    }
+    .strategy-col.de {
+      background: #fefce8;
+      border-color: #fde68a;
+    }
+    .strategy-col.no {
+      background: #f0fdf4;
+      border-color: #bbf7d0;
+    }
+    .strategy-col h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin: 0 0 8px;
+    }
+    .strategy-col ul {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: var(--text);
+    }
+    @media (max-width: 600px) {
+      .strategy-block { grid-template-columns: 1fr; }
+      .meal-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body data-page="essen">
+
+  <main class="main" id="main">
+
+      <div class="page-hero">
+        <div class="page-hero-meta">Planung &nbsp;·&nbsp; Norwegen 2026</div>
+        <h1 class="page-hero-title">🍳 Essen unterwegs</h1>
+        <p class="page-hero-subtitle">10 Grundgerichte im Wechsel &nbsp;·&nbsp; Wochenrotation &nbsp;·&nbsp; Einkaufsstrategie</p>
+      </div>
+
+      <div class="section-tabs">
+        <a href="#gerichte" class="section-tab">🍽️ Grundgerichte</a>
+        <a href="#rotation" class="section-tab">📅 Wochenplan</a>
+        <a href="#strategie" class="section-tab">🛒 Einkaufsstrategie</a>
+      </div>
+
+      <div class="page-sections">
+
+        <!-- ── 10 Grundgerichte ── -->
+        <details class="accordion" id="gerichte">
+          <summary>
+            <span class="accordion-icon">🍽️</span>
+            <span class="accordion-title">Die 10 Grundgerichte</span>
+            <span class="accordion-chevron">›</span>
+          </summary>
+          <div class="accordion-body">
+            <p class="poi-desc" style="margin-bottom: 16px;">
+              Alle Gerichte sind für zwei Personen im Camper konzipiert: wenig Abwasch, robuste Zutaten,
+              auch bei schlechtem Wetter in der engen Küche machbar.
+            </p>
+            <div class="meal-grid">
+
+              <div class="meal-card">
+                <div class="meal-card-emoji">🍝</div>
+                <div class="meal-card-name">1. Spaghetti Bolognese</div>
+                <div class="meal-card-desc">Rinderhack (frisch oder Dosen-Corned Beef), Tomaten aus der Dose, Zwiebel, Knoblauch.</div>
+                <div class="meal-card-tags">
+                  <span class="meal-tag">≈30 min</span>
+                  <span class="meal-tag">sättigend</span>
+                </div>
+              </div>
+
+              <div class="meal-card">
+                <div class="meal-card-emoji">🍛</div>
+                <div class="meal-card-name">2. Reis-Curry mit Kokosmilch</div>
+                <div class="meal-card-desc">Kokosmilch aus der Dose, Currypaste, Kichererbsen, frisches oder TK-Gemüse, Reis.</div>
+                <div class="meal-card-tags">
+                  <span class="meal-tag">≈25 min</span>
+                  <span class="meal-tag">vegan</span>
+                </div>
+              </div>
+
+              <div class="meal-card">
+                <div class="meal-card-emoji">🥣</div>
+                <div class="meal-card-name">3. Linsensuppe</div>
+                <div class="meal-card-desc">Rote Linsen, Kartoffeln, Zwiebeln, Tomatenmark, Kreuzkümmel. Braucht kein Einweichen.</div>
+                <div class="meal-card-tags">
+                  <span class="meal-tag">≈35 min</span>
+                  <span class="meal-tag">günstig</span>
+                </div>
+              </div>
+
+              <div class="meal-card">
+                <div class="meal-card-emoji">🥙</div>
+                <div class="meal-card-name">4. Wraps mit Gemüse &amp; Käse</div>
+                <div class="meal-card-desc">Tortillas (haltbar), Paprika, Mais, Käse, Joghurt oder Saure Sahne. Schnelle Abendmahlzeit.</div>
+                <div class="meal-card-tags">
+                  <span class="meal-tag">≈15 min</span>
+                  <span class="meal-tag">kalt möglich</span>
+                </div>
+              </div>
+
+              <div class="meal-card">
+                <div class="meal-card-emoji">🥔</div>
+                <div class="meal-card-name">5. Kartoffelsuppe mit Würstchen</div>
+                <div class="meal-card-desc">Kartoffeln, Zwiebeln, Würstchen (lang haltbar), Brühe aus Würfel, etwas Senf.</div>
+                <div class="meal-card-tags">
+                  <span class="meal-tag">≈30 min</span>
+                  <span class="meal-tag">wärmend</span>
+                </div>
+              </div>
+
+              <div class="meal-card">
+                <div class="meal-card-emoji">🍳</div>
+                <div class="meal-card-name">6. Frittata / Rührei-Pfanne</div>
+                <div class="meal-card-desc">Eier, Paprika, Kartoffeln (vorgekocht), Zwiebeln. Auch als Frühstück für besondere Tage.</div>
+                <div class="meal-card-tags">
+                  <span class="meal-tag">≈20 min</span>
+                  <span class="meal-tag">flexibel</span>
+                </div>
+              </div>
+
+              <div class="meal-card">
+                <div class="meal-card-emoji">🌾</div>
+                <div class="meal-card-name">7. Couscous-Pfanne</div>
+                <div class="meal-card-desc">Couscous mit heißem Wasser übergießen, mit Kichererbsen, Rosinen, Paprika mischen. Kein Kochen nötig.</div>
+                <div class="meal-card-tags">
+                  <span class="meal-tag">≈10 min</span>
+                  <span class="meal-tag">schnellst</span>
+                </div>
+              </div>
+
+              <div class="meal-card">
+                <div class="meal-card-emoji">🐟</div>
+                <div class="meal-card-name">8. Pasta mit Thunfisch</div>
+                <div class="meal-card-desc">Pasta, Thunfisch aus der Dose, Oliven, Tomatenmark, Kapern (optional). Klassiker für müde Tage.</div>
+                <div class="meal-card-tags">
+                  <span class="meal-tag">≈20 min</span>
+                  <span class="meal-tag">einfach</span>
+                </div>
+              </div>
+
+              <div class="meal-card">
+                <div class="meal-card-emoji">🫘</div>
+                <div class="meal-card-name">9. Mexikanische Bohnenpfanne</div>
+                <div class="meal-card-desc">Kidneybohnen, Mais, Paprika, Tomaten, Gewürze. Mit Tortillas oder Reis servieren.</div>
+                <div class="meal-card-tags">
+                  <span class="meal-tag">≈25 min</span>
+                  <span class="meal-tag">vegan</span>
+                </div>
+              </div>
+
+              <div class="meal-card">
+                <div class="meal-card-emoji">🍜</div>
+                <div class="meal-card-name">10. Gemüse-Nudelpfanne</div>
+                <div class="meal-card-desc">Kurze Nudeln, Zucchini, Paprika, Ei oder Käse. Alles in einer Pfanne — minimaler Abwasch.</div>
+                <div class="meal-card-tags">
+                  <span class="meal-tag">≈25 min</span>
+                  <span class="meal-tag">one-pot</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </details>
+
+        <!-- ── Wochenrotation ── -->
+        <details class="accordion" id="rotation">
+          <summary>
+            <span class="accordion-icon">📅</span>
+            <span class="accordion-title">Wochenrotation (4 Wochen)</span>
+            <span class="accordion-chevron">›</span>
+          </summary>
+          <div class="accordion-body">
+            <p class="poi-desc" style="margin-bottom: 16px;">
+              Die 10 Gerichte verteilt auf 4 Wochen — jedes Gericht kommt 3-mal vor, mit Puffertagen für
+              Restaurantbesuche oder spontane Fischkäufe vor Ort.
+            </p>
+
+            <h4 style="font-size:0.88rem;color:var(--primary-dark);margin:0 0 8px;">Woche 1 — Anreise &amp; Küste (11.–17. Aug)</h4>
+            <table class="week-table">
+              <thead>
+                <tr><th>Tag</th><th>Datum</th><th>Abendessen</th><th>Stopp</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="day-label">Di</td><td>12. Aug</td><td><span class="meal-num">1</span>Spaghetti Bolognese</td><td>Kristiansand</td></tr>
+                <tr><td class="day-label">Mi</td><td>13. Aug</td><td><span class="meal-num">2</span>Reis-Curry</td><td>Lillesand</td></tr>
+                <tr><td class="day-label">Do</td><td>14. Aug</td><td><span class="meal-num">7</span>Couscous-Pfanne</td><td>Arendal</td></tr>
+                <tr><td class="day-label">Fr</td><td>15. Aug</td><td><span class="meal-num">4</span>Wraps</td><td>Stavanger</td></tr>
+                <tr><td class="day-label">Sa</td><td>16. Aug</td><td>🍽️ Restaurant (Fiskebrygga)</td><td>Stavanger</td></tr>
+                <tr><td class="day-label">So</td><td>17. Aug</td><td><span class="meal-num">5</span>Kartoffelsuppe</td><td>Stavanger</td></tr>
+              </tbody>
+            </table>
+
+            <h4 style="font-size:0.88rem;color:var(--primary-dark);margin:20px 0 8px;">Woche 2 — Fjorde (18.–24. Aug)</h4>
+            <table class="week-table">
+              <thead>
+                <tr><th>Tag</th><th>Datum</th><th>Abendessen</th><th>Stopp</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="day-label">Mo</td><td>18. Aug</td><td><span class="meal-num">3</span>Linsensuppe</td><td>Hardangerfjord</td></tr>
+                <tr><td class="day-label">Di</td><td>19. Aug</td><td><span class="meal-num">8</span>Pasta mit Thunfisch</td><td>Hardangerfjord</td></tr>
+                <tr><td class="day-label">Mi</td><td>20. Aug</td><td><span class="meal-num">6</span>Frittata</td><td>Bergen</td></tr>
+                <tr><td class="day-label">Do</td><td>21. Aug</td><td>🍽️ Restaurant (Bergen Fischmarkt)</td><td>Bergen</td></tr>
+                <tr><td class="day-label">Fr</td><td>22. Aug</td><td><span class="meal-num">9</span>Bohnenpfanne</td><td>Flåm</td></tr>
+                <tr><td class="day-label">Sa</td><td>23. Aug</td><td><span class="meal-num">1</span>Spaghetti Bolognese</td><td>Flåm</td></tr>
+                <tr><td class="day-label">So</td><td>24. Aug</td><td><span class="meal-num">10</span>Nudelpfanne</td><td>Geiranger</td></tr>
+              </tbody>
+            </table>
+
+            <h4 style="font-size:0.88rem;color:var(--primary-dark);margin:20px 0 8px;">Woche 3 — Norden (25.–31. Aug)</h4>
+            <table class="week-table">
+              <thead>
+                <tr><th>Tag</th><th>Datum</th><th>Abendessen</th><th>Stopp</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="day-label">Mo</td><td>25. Aug</td><td><span class="meal-num">2</span>Reis-Curry</td><td>Geiranger</td></tr>
+                <tr><td class="day-label">Di</td><td>26. Aug</td><td><span class="meal-num">5</span>Kartoffelsuppe</td><td>Romsdal</td></tr>
+                <tr><td class="day-label">Mi</td><td>27. Aug</td><td><span class="meal-num">4</span>Wraps</td><td>Romsdal</td></tr>
+                <tr><td class="day-label">Do</td><td>28. Aug</td><td><span class="meal-num">7</span>Couscous-Pfanne</td><td>Jotunheimen</td></tr>
+                <tr><td class="day-label">Fr</td><td>29. Aug</td><td><span class="meal-num">3</span>Linsensuppe</td><td>Oslo</td></tr>
+                <tr><td class="day-label">Sa</td><td>30. Aug</td><td>🍽️ Restaurant (Grünerløkka)</td><td>Oslo</td></tr>
+                <tr><td class="day-label">So</td><td>31. Aug</td><td><span class="meal-num">6</span>Frittata</td><td>Oslo</td></tr>
+              </tbody>
+            </table>
+
+            <h4 style="font-size:0.88rem;color:var(--primary-dark);margin:20px 0 8px;">Woche 4 — Heimreise (1.–7. Sept)</h4>
+            <table class="week-table">
+              <thead>
+                <tr><th>Tag</th><th>Datum</th><th>Abendessen</th><th>Stopp</th></tr>
+              </thead>
+              <tbody>
+                <tr><td class="day-label">Mo</td><td>1. Sept</td><td><span class="meal-num">8</span>Pasta mit Thunfisch</td><td>Göteborg</td></tr>
+                <tr><td class="day-label">Di</td><td>2. Sept</td><td><span class="meal-num">9</span>Bohnenpfanne</td><td>Göteborg / DK</td></tr>
+                <tr><td class="day-label">Mi</td><td>3. Sept</td><td><span class="meal-num">10</span>Nudelpfanne</td><td>Dänemark</td></tr>
+                <tr><td class="day-label">Do</td><td>4. Sept</td><td><span class="meal-num">1</span>Spaghetti Bolognese</td><td>Dänemark</td></tr>
+                <tr><td class="day-label">Fr</td><td>5. Sept</td><td><span class="meal-num">2</span>Reis-Curry</td><td>Heimreise</td></tr>
+                <tr><td class="day-label">Sa</td><td>6. Sept</td><td><span class="meal-num">7</span>Couscous-Pfanne</td><td>Heimreise / MOD</td></tr>
+              </tbody>
+            </table>
+
+            <p class="poi-desc" style="margin-top:14px;font-style:italic;">
+              Letzte Woche (7.–11. Sept): Aufbrauchen von Resten und Restvorrat, Zuhause in Marktoberdorf.
+            </p>
+          </div>
+        </details>
+
+        <!-- ── Einkaufsstrategie ── -->
+        <details class="accordion" id="strategie">
+          <summary>
+            <span class="accordion-icon">🛒</span>
+            <span class="accordion-title">Einkaufsstrategie: Was wo kaufen</span>
+            <span class="accordion-chevron">›</span>
+          </summary>
+          <div class="accordion-body">
+            <p class="poi-desc" style="margin-bottom: 16px;">
+              Norwegen ist deutlich teurer als Deutschland — Lebensmittel kosten oft 50–100&nbsp;% mehr.
+              Die richtige Einkaufsstrategie spart mehrere Hundert Euro.
+            </p>
+
+            <div class="strategy-block">
+              <div class="strategy-col de">
+                <h4>🇩🇪 In Deutschland kaufen (vor Abfahrt)</h4>
+                <ul>
+                  <li>Alle <strong>Trockenwaren</strong>: Pasta, Reis, Couscous, Linsen, Haferflocken, Müsli</li>
+                  <li>Alle <strong>Konserven</strong>: Tomaten, Kokosmilch, Kichererbsen, Bohnen, Thunfisch, Mais</li>
+                  <li>Gewürze &amp; Saucen: Tomatenmark, Currypaste, Sojasauce, Senf, Öl, Salz, Pfeffer</li>
+                  <li>Frühstück-Grundstock: Marmelade, Honig, Nuss-Nougat-Creme, Knäckebrot, Kaffee, Tee</li>
+                  <li>Snacks &amp; Notfall: Energieriegel, Kekse, Nüsse, Instantnudeln, Fertigsuppen</li>
+                  <li>Tortillas / Wraps (lange haltbar)</li>
+                  <li>Würstchen (vakuumverpackt, 2–3 Wochen haltbar)</li>
+                </ul>
+              </div>
+              <div class="strategy-col no">
+                <h4>🇳🇴 In Norwegen kaufen (nur das Nötigste)</h4>
+                <ul>
+                  <li><strong>Frisches Brot</strong> — 2–3 Mal pro Woche bei Rema 1000 / Kiwi / Spar</li>
+                  <li><strong>Milch, Butter, Eier</strong> — ca. wöchentlich auffüllen</li>
+                  <li><strong>Frisches Gemüse</strong> — Paprika, Zucchini, Zwiebeln, Kartoffeln (kleiner Vorrat)</li>
+                  <li><strong>Frischen Fisch</strong> — direkt am Hafen kaufen (Lofoten, Flåm, Bergen)</li>
+                  <li>Joghurt, Käse — wenn günstig bei Kiwi/Rema (günstiger als Coop)</li>
+                  <li><strong>Günstiger einkaufen:</strong> Kiwi &gt; Rema 1000 &gt; Spar &gt; Coop (teuerste)</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="poi-card" style="margin-top: 16px;">
+              <div class="poi-header">
+                <h3 class="poi-name">🇩🇰 Dänemark-Zwischenstopp nutzen</h3>
+              </div>
+              <p class="poi-desc">
+                Auf der Hinreise (Hirtshals) und Rückreise lohnt sich ein kurzer Stopp im dänischen Supermarkt
+                (Netto, Fakta, Lidl). Preise liegen zwischen Deutschland und Norwegen —
+                guter Zeitpunkt um <strong>Bier, Wein, Süßes</strong> und ggf. frische Produkte aufzufüllen,
+                die in Norwegen unverhältnismäßig teuer sind.
+              </p>
+            </div>
+
+            <div class="poi-card" style="margin-top: 12px;">
+              <div class="poi-header">
+                <h3 class="poi-name">💡 Praktische Tipps</h3>
+              </div>
+              <ul class="info-list">
+                <li><span class="info-icon">🧊</span><span>Kühlbox/Kühlschrank des Campers: frische Zutaten max. für 3–4 Tage einplanen</span></li>
+                <li><span class="info-icon">⏰</span><span>Sonntags haben viele Supermärkte in Norwegen kürzere Öffnungszeiten (oft 12–18 Uhr), manche sind geschlossen</span></li>
+                <li><span class="info-icon">💳</span><span>Norwegen ist weitgehend bargeldlos — Kreditkarte reicht, Bargeld kaum nötig</span></li>
+                <li><span class="info-icon">🎣</span><span>Frischer Fisch direkt vom Fischer / Fischhändler ist oft günstiger als im Supermarkt und das Highlight der Reise</span></li>
+              </ul>
+            </div>
+
+          </div>
+        </details>
+
+      </div>
+  </main>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+</body>
+</html>

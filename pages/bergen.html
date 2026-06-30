@@ -8,19 +8,9 @@
 </head>
 <body data-page="bergen">
 
-  <header class="mobile-header">
-    <button class="hamburger" id="menuBtn" aria-label="Navigation öffnen">☰</button>
-    <span class="mobile-header-title">Bergen</span>
-  </header>
-
-  <div class="app">
-    <nav class="sidebar" id="sidebar" aria-label="Stopp-Navigation"></nav>
-    <div class="overlay" id="overlay" aria-hidden="true"></div>
-
-    <main class="main">
+  <main class="main" id="main">
 
       <div class="page-hero">
-        <a href="../index.html" class="back-link">← Zur Übersicht</a>
         <div class="page-hero-meta">Tag 13–14 &nbsp;·&nbsp; 23.–24. August 2026</div>
         <h1 class="page-hero-title">🇳🇴 Bergen</h1>
         <p class="page-hero-subtitle">Bryggen &nbsp;·&nbsp; Fløyen &nbsp;·&nbsp; Sandviken &nbsp;·&nbsp; Tor zu den Fjorden</p>
@@ -28,7 +18,8 @@
 
       <div class="hero-image-wrapper">
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Bryggen%2C_Bergen%2C_Noruega%2C_2019-09-08%2C_DD_115-117_PAN.jpg/800px-Bryggen%2C_Bergen%2C_Noruega%2C_2019-09-08%2C_DD_115-117_PAN.jpg"
+          src="../images/bergen.jpg"
+          onerror="this.style.display='none';this.parentElement.classList.add('no-image')"
           alt="Bryggen – das historische Hanseviertel in Bergen, UNESCO-Weltkulturerbe"
           class="hero-image"
           loading="lazy"
@@ -36,6 +27,7 @@
         <p class="hero-image-credit">
           Foto: <a href="https://commons.wikimedia.org/wiki/File:Bryggen,_Bergen,_Noruega,_2019-09-08,_DD_115-117_PAN.jpg" target="_blank" rel="noopener">Bryggen Bergen, Wikimedia Commons</a> &nbsp;·&nbsp; CC BY-SA
         </p>
+        <div class="hero-placeholder">Bergen</div>
       </div>
 
       <nav class="page-nav" id="pageNav" aria-label="Zwischen Stopps navigieren"></nav>
@@ -51,7 +43,7 @@
       <div class="page-sections">
 
         <!-- ── Sehenswürdigkeiten ── -->
-        <details class="accordion" id="sehenswuerdigkeiten" open>
+        <details class="accordion" id="sehenswuerdigkeiten">
           <summary>
             <span class="accordion-icon">🏛️</span>
             <span class="accordion-title">Sehenswürdigkeiten</span>
@@ -317,8 +309,7 @@
         </details>
 
       </div>
-    </main>
-  </div>
+  </main>
 
   <script src="../js/data.js"></script>
   <script src="../js/app.js"></script>

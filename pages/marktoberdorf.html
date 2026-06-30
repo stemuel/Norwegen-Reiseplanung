@@ -8,22 +8,16 @@
 </head>
 <body data-page="marktoberdorf">
 
-  <header class="mobile-header">
-    <button class="hamburger" id="menuBtn" aria-label="Navigation öffnen">☰</button>
-    <span class="mobile-header-title">Heimreise &amp; Marktoberdorf</span>
-  </header>
-
-  <div class="app">
-    <nav class="sidebar" id="sidebar" aria-label="Stopp-Navigation"></nav>
-    <div class="overlay" id="overlay" aria-hidden="true"></div>
-
-    <main class="main">
+  <main class="main" id="main">
 
       <div class="page-hero">
-        <a href="../index.html" class="back-link">← Zur Übersicht</a>
         <div class="page-hero-meta">Tag 27–31 &nbsp;·&nbsp; 6.–11. September 2026</div>
         <h1 class="page-hero-title">🏠 Heimreise &amp; Marktoberdorf</h1>
         <p class="page-hero-subtitle">Puffertage &nbsp;·&nbsp; Norddeutschland &nbsp;·&nbsp; Ankunft Zuhause</p>
+      </div>
+
+      <div class="hero-image-wrapper no-image">
+        <div class="hero-placeholder">Heimreise</div>
       </div>
 
       <nav class="page-nav" id="pageNav" aria-label="Zwischen Stopps navigieren"></nav>
@@ -36,7 +30,7 @@
       <div class="page-sections">
 
         <!-- ── Etappen ── -->
-        <details class="accordion" id="etappen" open>
+        <details class="accordion" id="etappen">
           <summary>
             <span class="accordion-icon">🚐</span>
             <span class="accordion-title">Letzte Etappen nach Hause</span>
@@ -107,8 +101,7 @@
         </details>
 
       </div>
-    </main>
-  </div>
+  </main>
 
   <script src="../js/data.js"></script>
   <script src="../js/app.js"></script>

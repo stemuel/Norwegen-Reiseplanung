@@ -8,19 +8,9 @@
 </head>
 <body data-page="praktisches">
 
-  <header class="mobile-header">
-    <button class="hamburger" id="menuBtn" aria-label="Navigation öffnen">☰</button>
-    <span class="mobile-header-title">Praktische Infos</span>
-  </header>
-
-  <div class="app">
-    <nav class="sidebar" id="sidebar" aria-label="Stopp-Navigation"></nav>
-    <div class="overlay" id="overlay" aria-hidden="true"></div>
-
-    <main class="main">
+  <main class="main" id="main">
 
       <div class="page-hero">
-        <a href="../index.html" class="back-link">← Zur Übersicht</a>
         <div class="page-hero-meta">Reiseinfos &nbsp;·&nbsp; Norwegen 2026</div>
         <h1 class="page-hero-title">📋 Praktische Infos</h1>
         <p class="page-hero-subtitle">Maut &amp; AutoPASS &nbsp;·&nbsp; Freies Campen &nbsp;·&nbsp; Wetter &nbsp;·&nbsp; Apps</p>
@@ -37,7 +27,7 @@
       <div class="page-sections">
 
         <!-- ── Maut & Geld ── -->
-        <details class="accordion" id="maut" open>
+        <details class="accordion" id="maut">
           <summary>
             <span class="accordion-icon">💳</span>
             <span class="accordion-title">Maut, Fähren &amp; Geld</span>
@@ -368,8 +358,7 @@
         </details>
 
       </div>
-    </main>
-  </div>
+  </main>
 
   <script src="../js/data.js"></script>
   <script src="../js/app.js"></script>

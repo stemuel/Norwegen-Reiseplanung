@@ -8,19 +8,9 @@
 </head>
 <body data-page="oslo">
 
-  <header class="mobile-header">
-    <button class="hamburger" id="menuBtn" aria-label="Navigation öffnen">☰</button>
-    <span class="mobile-header-title">Oslo</span>
-  </header>
-
-  <div class="app">
-    <nav class="sidebar" id="sidebar" aria-label="Stopp-Navigation"></nav>
-    <div class="overlay" id="overlay" aria-hidden="true"></div>
-
-    <main class="main">
+  <main class="main" id="main">
 
       <div class="page-hero">
-        <a href="../index.html" class="back-link">← Zur Übersicht</a>
         <div class="page-hero-meta">Tag 23–24 &nbsp;·&nbsp; 2.–3. September 2026</div>
         <h1 class="page-hero-title">🇳🇴 Oslo</h1>
         <p class="page-hero-subtitle">Vigelandpark &nbsp;·&nbsp; Grünerløkka &nbsp;·&nbsp; Opernhaus &nbsp;·&nbsp; Fjordbaden</p>
@@ -28,7 +18,8 @@
 
       <div class="hero-image-wrapper">
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Vigeland_Sculpture_Park_-_Panoramic_view_towards_the_Monolith%2C_Oslo%2C_Norway.jpg/800px-Vigeland_Sculpture_Park_-_Panoramic_view_towards_the_Monolith%2C_Oslo%2C_Norway.jpg"
+          src="../images/oslo.jpg"
+          onerror="this.style.display='none';this.parentElement.classList.add('no-image')"
           alt="Vigeland Skulpturenpark in Oslo – Panoramablick auf den Monolith im Frognerpark"
           class="hero-image"
           loading="lazy"
@@ -36,6 +27,7 @@
         <p class="hero-image-credit">
           Foto: <a href="https://commons.wikimedia.org/wiki/File:Vigeland_Sculpture_Park_-_Panoramic_view_towards_the_Monolith,_Oslo,_Norway.jpg" target="_blank" rel="noopener">Vigeland Sculpture Park, Wikimedia Commons</a> &nbsp;·&nbsp; CC BY-SA
         </p>
+        <div class="hero-placeholder">Oslo</div>
       </div>
 
       <nav class="page-nav" id="pageNav" aria-label="Zwischen Stopps navigieren"></nav>
@@ -51,7 +43,7 @@
       <div class="page-sections">
 
         <!-- ── Sehenswürdigkeiten ── -->
-        <details class="accordion" id="sehenswuerdigkeiten" open>
+        <details class="accordion" id="sehenswuerdigkeiten">
           <summary>
             <span class="accordion-icon">🏛️</span>
             <span class="accordion-title">Sehenswürdigkeiten</span>
@@ -340,8 +332,7 @@
         </details>
 
       </div>
-    </main>
-  </div>
+  </main>
 
   <script src="../js/data.js"></script>
   <script src="../js/app.js"></script>

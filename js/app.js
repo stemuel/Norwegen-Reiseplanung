@@ -9,167 +9,299 @@
     return document.body.dataset.page || null;
   }
 
-  function renderSidebar() {
-    var sidebar = document.getElementById('sidebar');
-    if (!sidebar) return;
-
+  /* ─────────────────────────────────────────────────────────
+     TOP NAVIGATION  (injected before <main>)
+  ───────────────────────────────────────────────────────── */
+  function renderTopNav() {
     var currentId = getCurrentStopId();
-    var onPage = isStopPage();
-    var homeHref = onPage ? '../index.html' : 'index.html';
-    var linkPrefix = onPage ? '' : 'pages/';
+    var onPage    = isStopPage();
+    var homeHref  = onPage ? '../index.html' : 'index.html';
+    var prefix    = onPage ? '' : 'pages/';
 
-    var html = '<div class="sidebar-header">'
-      + '<a href="' + homeHref + '" class="sidebar-brand">'
-      + '<span class="sidebar-brand-emoji">🇳🇴</span>'
-      + '<span class="sidebar-brand-text">Norwegen 2026</span>'
+    /* ── Top bar ── */
+    var nav = document.createElement('header');
+    nav.className = 'top-nav';
+    nav.id = 'topNav';
+    nav.innerHTML =
+      '<a href="' + homeHref + '" class="top-nav-brand">'
+      + '<span class="top-nav-flag">🇳🇴</span>'
+      + '<span class="top-nav-title">Norwegen 2026</span>'
       + '</a>'
-      + '<button class="close-btn" id="closeBtn" aria-label="Menü schließen">✕</button>'
-      + '</div>'
-      + '<div class="sidebar-meta">'
-      + '<p>🚐 Camper-Tour</p>'
-      + '<p>11. Aug – 11. Sept 2026</p>'
-      + '<p>31 Tage · Hamburg → MOD</p>'
-      + '</div>'
-      + '<ul class="nav-stops">';
+      + '<button class="top-nav-toggle" id="topNavToggle" '
+      + 'aria-label="Navigation öffnen" aria-expanded="false">'
+      + '☰ <span>Stopps</span>'
+      + '</button>';
 
-    STOPS.forEach(function (stop) {
+    document.body.insertBefore(nav, document.body.firstChild);
+
+    /* ── Stop list for dropdown ── */
+    var stopItems = '';
+    STOPS.forEach(function (stop, i) {
+      var href     = prefix + stop.file;
       var isActive = stop.id === currentId;
-      var href = linkPrefix + stop.file;
-      html += '<li><a href="' + href + '"'
-        + (isActive ? ' class="active" aria-current="page"' : '')
-        + '>'
-        + '<span class="nav-stop-emoji">' + stop.emoji + '</span>'
-        + '<span class="nav-stop-info">'
-        + '<span class="nav-stop-name">' + stop.name + '</span>'
-        + '<span class="nav-stop-days">' + stop.days + ' · ' + stop.dates + '</span>'
+      stopItems +=
+        '<li><a href="' + href + '"'
+        + (isActive ? ' class="active" aria-current="page"' : '') + '>'
+        + '<span class="nd-num">' + (i + 1) + '</span>'
+        + '<span class="nd-emoji">' + stop.emoji + '</span>'
+        + '<span class="nd-info">'
+        + '<span class="nd-name">' + stop.name + '</span>'
+        + '<span class="nd-days">' + stop.days + ' · ' + stop.dates + '</span>'
         + '</span>'
         + '</a></li>';
     });
 
-    html += '</ul>'
-      + '<div class="sidebar-util">'
-      + '<p class="sidebar-util-label">ℹ️ Infos &amp; Planung</p>'
-      + '<ul class="nav-util">'
-      + '<li><a href="' + linkPrefix + 'praktisches.html"'
-      + (currentId === 'praktisches' ? ' class="active" aria-current="page"' : '') + '>'
-      + '📋 Praktische Infos</a></li>'
-      + '<li><a href="' + linkPrefix + 'ki-prompts.html"'
-      + (currentId === 'ki-prompts' ? ' class="active" aria-current="page"' : '') + '>'
-      + '🤖 KI-Prompt-Liste</a></li>'
-      + '</ul>'
-      + '</div>';
-    sidebar.innerHTML = html;
+    /* ── Utility links for dropdown footer ── */
+    var util = [
+      { id: 'praktisches',  href: prefix + 'praktisches.html',  label: '📋 Praktische Infos' },
+      { id: 'ki-prompts',   href: prefix + 'ki-prompts.html',   label: '🤖 KI-Prompt-Liste'  },
+      { id: 'essen',        href: prefix + 'essen.html',        label: '🍳 Essen unterwegs'  },
+      { id: 'einkaufsliste',href: prefix + 'einkaufsliste.html',label: '🛒 Einkaufsliste'    }
+    ];
+
+    var footerLinks = '';
+    util.forEach(function (u) {
+      footerLinks +=
+        '<a href="' + u.href + '"'
+        + (currentId === u.id ? ' class="active"' : '') + '>'
+        + u.label + '</a>';
+    });
+
+    /* ── Dropdown panel ── */
+    var dropdown = document.createElement('div');
+    dropdown.className = 'nav-dropdown';
+    dropdown.id = 'navDropdown';
+    dropdown.setAttribute('aria-hidden', 'true');
+    dropdown.innerHTML =
+      '<div class="nd-header">'
+      + '<span class="nd-title">Route &amp; Stopps</span>'
+      + '<button class="nd-close" id="ndClose" aria-label="Menü schließen">✕</button>'
+      + '</div>'
+      + '<ul class="nd-list">' + stopItems + '</ul>'
+      + '<div class="nd-footer">' + footerLinks + '</div>';
+
+    document.body.insertBefore(dropdown, document.body.children[1]);
+
+    /* ── Overlay ── */
+    var overlay = document.createElement('div');
+    overlay.className = 'nav-overlay';
+    overlay.id = 'navOverlay';
+    document.body.insertBefore(overlay, document.body.children[2]);
   }
 
-  function setupMenu() {
-    var menuBtn = document.getElementById('menuBtn');
-    var sidebar = document.getElementById('sidebar');
-    var overlay = document.getElementById('overlay');
+  function setupNavDropdown() {
+    var toggleBtn = document.getElementById('topNavToggle');
+    var dropdown  = document.getElementById('navDropdown');
+    var closeBtn  = document.getElementById('ndClose');
+    var overlay   = document.getElementById('navOverlay');
 
-    function openSidebar() {
-      sidebar.classList.add('open');
-      overlay.classList.add('active');
+    function open() {
+      if (!dropdown) return;
+      dropdown.classList.add('open');
+      if (overlay)   overlay.classList.add('active');
+      if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'true');
+      dropdown.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
-      var closeBtn = document.getElementById('closeBtn');
       if (closeBtn) closeBtn.focus();
     }
 
-    function closeSidebar() {
-      sidebar.classList.remove('open');
-      overlay.classList.remove('active');
+    function close() {
+      if (!dropdown) return;
+      dropdown.classList.remove('open');
+      if (overlay)   overlay.classList.remove('active');
+      if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+      dropdown.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
-      if (menuBtn) menuBtn.focus();
+      if (toggleBtn) toggleBtn.focus();
     }
 
-    if (menuBtn) menuBtn.addEventListener('click', openSidebar);
-
-    document.addEventListener('click', function (e) {
-      var closeBtn = document.getElementById('closeBtn');
-      if (closeBtn && closeBtn.contains(e.target)) closeSidebar();
-      if (overlay && overlay.contains(e.target)) closeSidebar();
-    });
+    if (toggleBtn) toggleBtn.addEventListener('click', open);
+    if (closeBtn)  closeBtn.addEventListener('click', close);
+    if (overlay)   overlay.addEventListener('click', close);
 
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && sidebar.classList.contains('open')) {
-        closeSidebar();
+      if (e.key === 'Escape' && dropdown && dropdown.classList.contains('open')) {
+        close();
       }
     });
   }
 
+  /* ─────────────────────────────────────────────────────────
+     BREADCRUMB  (injected before .page-hero on stop pages)
+  ───────────────────────────────────────────────────────── */
+  function renderBreadcrumb() {
+    if (!isStopPage()) return;
+
+    var currentId = getCurrentStopId();
+    var stop = null;
+    STOPS.forEach(function (s) { if (s.id === currentId) stop = s; });
+
+    /* Derive display name */
+    var name = stop ? stop.name : '';
+    if (!name) {
+      var titleEl = document.querySelector('.page-hero-title');
+      if (titleEl) {
+        /* Strip leading emoji characters */
+        name = titleEl.textContent.trim().replace(/^[\u{1F300}-\u{1FFFF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}︀-️\s]+/u, '').split('&')[0].trim();
+        if (!name) name = titleEl.textContent.trim();
+      }
+    }
+
+    var crumb = document.createElement('nav');
+    crumb.className = 'breadcrumb';
+    crumb.setAttribute('aria-label', 'Breadcrumb');
+    crumb.innerHTML =
+      '<a href="../index.html">Startseite</a>'
+      + '<span class="bc-sep" aria-hidden="true">›</span>'
+      + '<span aria-current="page">' + (name || 'Stopp') + '</span>';
+
+    var main = document.getElementById('main') || document.querySelector('main.main');
+    if (!main) return;
+
+    var hero = main.querySelector('.page-hero');
+    main.insertBefore(crumb, hero || main.firstChild);
+  }
+
+  /* ─────────────────────────────────────────────────────────
+     VERTICAL TIMELINE  (index page)
+  ───────────────────────────────────────────────────────── */
   function renderTimeline() {
-    var timeline = document.getElementById('timeline');
-    if (!timeline) return;
+    var container = document.getElementById('timeline');
+    if (!container) return;
+
+    container.className = 'tl-list';
 
     STOPS.forEach(function (stop, index) {
       var item = document.createElement('div');
-      item.className = 'timeline-item';
-      item.innerHTML = '<div class="timeline-dot" aria-hidden="true">' + (index + 1) + '</div>'
-        + '<div class="stop-card">'
-        + '<div class="stop-emoji" aria-hidden="true">' + stop.emoji + '</div>'
-        + '<div class="stop-info">'
-        + '<div class="stop-meta">' + stop.days + ' &nbsp;·&nbsp; ' + stop.dates + '</div>'
-        + '<div class="stop-name">' + stop.name + '</div>'
-        + '<div class="stop-subtitle">' + stop.subtitle + '</div>'
+      item.className = 'tl-item';
+
+      /* Make entire row clickable */
+      item.addEventListener('click', function () {
+        window.location.href = 'pages/' + stop.file;
+      });
+
+      item.innerHTML =
+        '<span class="tl-dot">' + (index + 1) + '</span>'
+        + '<div class="tl-content">'
+        + '<div class="tl-left">'
+        + '<div class="tl-dates">' + stop.days + ' &nbsp;·&nbsp; ' + stop.dates + '</div>'
+        + '<div class="tl-name">' + stop.emoji + ' ' + stop.name + '</div>'
+        + '<div class="tl-sub">' + stop.subtitle + '</div>'
         + '</div>'
-        + '<a href="pages/' + stop.file + '" class="stop-link">Mehr erfahren</a>'
+        + '<a href="pages/' + stop.file + '" class="tl-link" tabindex="-1" '
+        + 'aria-hidden="true">→</a>'
         + '</div>';
-      timeline.appendChild(item);
+
+      container.appendChild(item);
     });
   }
 
+  /* ─────────────────────────────────────────────────────────
+     PAGE NAV  (prev / next — top AND bottom)
+  ───────────────────────────────────────────────────────── */
   function renderPageNav() {
-    var navEl = document.getElementById('pageNav');
-    if (!navEl) return;
-
     var currentId = getCurrentStopId();
     var currentIndex = -1;
     STOPS.forEach(function (s, i) { if (s.id === currentId) currentIndex = i; });
     if (currentIndex === -1) return;
 
-    var html = '';
-
-    if (currentIndex > 0) {
-      var prev = STOPS[currentIndex - 1];
-      html += '<a href="' + prev.file + '" class="page-nav-btn prev">'
-        + prev.emoji + ' ' + prev.name
-        + '</a>';
+    function buildHTML() {
+      var html = '';
+      if (currentIndex > 0) {
+        var prev = STOPS[currentIndex - 1];
+        html += '<a href="' + prev.file + '" class="page-nav-btn prev">'
+          + prev.emoji + ' ' + prev.name + '</a>';
+      }
+      if (currentIndex < STOPS.length - 1) {
+        var next = STOPS[currentIndex + 1];
+        html += '<a href="' + next.file + '" class="page-nav-btn next">'
+          + next.emoji + ' ' + next.name + '</a>';
+      }
+      return html;
     }
 
-    if (currentIndex < STOPS.length - 1) {
-      var next = STOPS[currentIndex + 1];
-      html += '<a href="' + next.file + '" class="page-nav-btn next">'
-        + next.emoji + ' ' + next.name
-        + '</a>';
-    }
+    var html = buildHTML();
+    if (!html) return;
 
-    navEl.innerHTML = html;
-    if (!html) navEl.style.display = 'none';
+    /* Top nav (already in HTML via #pageNav) */
+    var topNav = document.getElementById('pageNav');
+    if (topNav) topNav.innerHTML = html;
+
+    /* Bottom nav — inject after .page-sections */
+    var sections = document.querySelector('.page-sections');
+    if (sections) {
+      var bottomNav = document.createElement('nav');
+      bottomNav.className = 'page-nav page-nav--bottom';
+      bottomNav.setAttribute('aria-label', 'Zwischen Stopps navigieren');
+      bottomNav.innerHTML = html;
+      sections.parentNode.insertBefore(bottomNav, sections.nextSibling);
+    }
   }
 
-  // Open the targeted accordion when a section-tab link is clicked
+  /* ─────────────────────────────────────────────────────────
+     ACCORDION HELPERS
+  ───────────────────────────────────────────────────────── */
+
+  /* Open targeted accordion when a section-tab is clicked */
   function setupAccordionLinks() {
     document.querySelectorAll('.section-tab').forEach(function (tab) {
       tab.addEventListener('click', function () {
-        var id = this.getAttribute('href').slice(1);
-        var target = document.getElementById(id);
-        if (target && target.tagName === 'DETAILS') {
-          target.open = true;
-        }
+        var hash   = this.getAttribute('href');
+        if (!hash || hash[0] !== '#') return;
+        var target = document.getElementById(hash.slice(1));
+        if (target && target.tagName === 'DETAILS') target.open = true;
       });
     });
-    // Also open on initial hash load
+
+    /* Also handle initial page load with a hash */
     if (window.location.hash) {
-      var target = document.querySelector(window.location.hash);
+      var id     = window.location.hash.slice(1);
+      var target = document.getElementById(id);
       if (target && target.tagName === 'DETAILS') target.open = true;
     }
   }
 
+  /* Smooth close animation for accordions */
+  function setupAccordionAnimation() {
+    document.querySelectorAll('details.accordion').forEach(function (details) {
+      var summary = details.querySelector('summary');
+      if (!summary) return;
+
+      summary.addEventListener('click', function (e) {
+        if (!details.open) return; /* opening: let browser handle natively */
+        e.preventDefault();
+
+        var body = details.querySelector('.accordion-body');
+        if (!body) { details.open = false; return; }
+
+        var startH = body.scrollHeight;
+        body.style.overflow   = 'hidden';
+        body.style.height     = startH + 'px';
+        body.offsetHeight;    /* force reflow */
+        body.style.transition = 'height 0.22s ease, opacity 0.18s ease';
+        body.style.height     = '0';
+        body.style.opacity    = '0';
+
+        body.addEventListener('transitionend', function done() {
+          body.removeEventListener('transitionend', done);
+          details.open = false;
+          body.style.cssText = '';
+        });
+      });
+    });
+  }
+
+  /* ─────────────────────────────────────────────────────────
+     BOOT
+  ───────────────────────────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', function () {
-    renderSidebar();
-    setupMenu();
+    renderTopNav();
+    setupNavDropdown();
+    renderBreadcrumb();
     renderTimeline();
     renderPageNav();
     setupAccordionLinks();
+    setupAccordionAnimation();
   });
 
 })();

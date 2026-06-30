@@ -8,22 +8,16 @@
 </head>
 <body data-page="daenemark">
 
-  <header class="mobile-header">
-    <button class="hamburger" id="menuBtn" aria-label="Navigation öffnen">☰</button>
-    <span class="mobile-header-title">Dänemark Rückweg</span>
-  </header>
-
-  <div class="app">
-    <nav class="sidebar" id="sidebar" aria-label="Stopp-Navigation"></nav>
-    <div class="overlay" id="overlay" aria-hidden="true"></div>
-
-    <main class="main">
+  <main class="main" id="main">
 
       <div class="page-hero">
-        <a href="../index.html" class="back-link">← Zur Übersicht</a>
         <div class="page-hero-meta">Tag 26 &nbsp;·&nbsp; 5. September 2026</div>
         <h1 class="page-hero-title">🇩🇰 Dänemark</h1>
         <p class="page-hero-subtitle">Rückweg &nbsp;·&nbsp; Küstenroute &nbsp;·&nbsp; Übernachtung vor Deutschland</p>
+      </div>
+
+      <div class="hero-image-wrapper no-image">
+        <div class="hero-placeholder">Dänemark</div>
       </div>
 
       <nav class="page-nav" id="pageNav" aria-label="Zwischen Stopps navigieren"></nav>
@@ -36,7 +30,7 @@
       <div class="page-sections">
 
         <!-- ── Mögliche Stopps ── -->
-        <details class="accordion" id="stopps" open>
+        <details class="accordion" id="stopps">
           <summary>
             <span class="accordion-icon">📍</span>
             <span class="accordion-title">Mögliche Stopps am Weg</span>
@@ -130,8 +124,7 @@
         </details>
 
       </div>
-    </main>
-  </div>
+  </main>
 
   <script src="../js/data.js"></script>
   <script src="../js/app.js"></script>

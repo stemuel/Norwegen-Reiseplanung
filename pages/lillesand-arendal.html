@@ -8,19 +8,9 @@
 </head>
 <body data-page="lillesand-arendal">
 
-  <header class="mobile-header">
-    <button class="hamburger" id="menuBtn" aria-label="Navigation öffnen">☰</button>
-    <span class="mobile-header-title">Lillesand &amp; Arendal</span>
-  </header>
-
-  <div class="app">
-    <nav class="sidebar" id="sidebar" aria-label="Stopp-Navigation"></nav>
-    <div class="overlay" id="overlay" aria-hidden="true"></div>
-
-    <main class="main">
+  <main class="main" id="main">
 
       <div class="page-hero">
-        <a href="../index.html" class="back-link">← Zur Übersicht</a>
         <div class="page-hero-meta">Tag 4–5 &nbsp;·&nbsp; 14.–15. August 2026</div>
         <h1 class="page-hero-title">🇳🇴 Lillesand &amp; Arendal</h1>
         <p class="page-hero-subtitle">Malerische Küste &nbsp;·&nbsp; Venedig des Nordens &nbsp;·&nbsp; Insel Merdø</p>
@@ -28,7 +18,8 @@
 
       <div class="hero-image-wrapper">
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Arendal_Utsikt_02.JPG/800px-Arendal_Utsikt_02.JPG"
+          src="../images/lillesand-arendal.jpg"
+          onerror="this.style.display='none';this.parentElement.classList.add('no-image')"
           alt="Blick über Arendal mit Hafen und historischer Altstadt Tyholmen"
           class="hero-image"
           loading="lazy"
@@ -36,6 +27,7 @@
         <p class="hero-image-credit">
           Foto: <a href="https://commons.wikimedia.org/wiki/File:Arendal_Utsikt_02.JPG" target="_blank" rel="noopener">Arendal Utsikt, Wikimedia Commons</a> &nbsp;·&nbsp; CC BY-SA
         </p>
+        <div class="hero-placeholder">Lillesand &amp; Arendal</div>
       </div>
 
       <nav class="page-nav" id="pageNav" aria-label="Zwischen Stopps navigieren"></nav>
@@ -51,7 +43,7 @@
       <div class="page-sections">
 
         <!-- ── Sehenswürdigkeiten ── -->
-        <details class="accordion" id="sehenswuerdigkeiten" open>
+        <details class="accordion" id="sehenswuerdigkeiten">
           <summary>
             <span class="accordion-icon">🏛️</span>
             <span class="accordion-title">Sehenswürdigkeiten</span>
@@ -298,8 +290,7 @@
         </details>
 
       </div>
-    </main>
-  </div>
+  </main>
 
   <script src="../js/data.js"></script>
   <script src="../js/app.js"></script>

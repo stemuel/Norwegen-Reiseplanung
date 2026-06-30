@@ -8,19 +8,9 @@
 </head>
 <body data-page="hirtshals">
 
-  <header class="mobile-header">
-    <button class="hamburger" id="menuBtn" aria-label="Navigation öffnen">☰</button>
-    <span class="mobile-header-title">Hirtshals</span>
-  </header>
-
-  <div class="app">
-    <nav class="sidebar" id="sidebar" aria-label="Stopp-Navigation"></nav>
-    <div class="overlay" id="overlay" aria-hidden="true"></div>
-
-    <main class="main">
+  <main class="main" id="main">
 
       <div class="page-hero">
-        <a href="../index.html" class="back-link">← Zur Übersicht</a>
         <div class="page-hero-meta">Tag 1 &nbsp;·&nbsp; 11. August 2026</div>
         <h1 class="page-hero-title">🇩🇰 Hirtshals</h1>
         <p class="page-hero-subtitle">Start der Reise &nbsp;·&nbsp; Übernachtung vor der Fähre &nbsp;·&nbsp; Nordseeküste</p>
@@ -28,7 +18,8 @@
 
       <div class="hero-image-wrapper">
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Hirtshals_townscape.jpg/800px-Hirtshals_townscape.jpg"
+          src="../images/hirtshals.jpg"
+          onerror="this.style.display='none';this.parentElement.classList.add('no-image')"
           alt="Blick über Hirtshals mit Hafen und Leuchtturm"
           class="hero-image"
           loading="lazy"
@@ -36,6 +27,7 @@
         <p class="hero-image-credit">
           Foto: <a href="https://commons.wikimedia.org/wiki/File:Hirtshals_townscape.jpg" target="_blank" rel="noopener">Wikimedia Commons</a> &nbsp;·&nbsp; CC BY-SA
         </p>
+        <div class="hero-placeholder">Hirtshals</div>
       </div>
 
       <nav class="page-nav" id="pageNav" aria-label="Zwischen Stopps navigieren"></nav>
@@ -51,7 +43,7 @@
       <div class="page-sections">
 
         <!-- ── Sehenswürdigkeiten ── -->
-        <details class="accordion" id="sehenswuerdigkeiten" open>
+        <details class="accordion" id="sehenswuerdigkeiten">
           <summary>
             <span class="accordion-icon">🏛️</span>
             <span class="accordion-title">Sehenswürdigkeiten</span>
@@ -205,8 +197,7 @@
         </details>
 
       </div>
-    </main>
-  </div>
+  </main>
 
   <script src="../js/data.js"></script>
   <script src="../js/app.js"></script>

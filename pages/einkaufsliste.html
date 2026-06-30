@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Einkaufsliste – Norwegen 2026</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .shop-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-top: 4px;
+    }
+    .shop-table th {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 700;
+      padding: 8px 10px;
+      text-align: left;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .shop-table th:first-child { width: 36px; text-align: center; }
+    .shop-table td {
+      padding: 7px 10px;
+      border-bottom: 1px solid #edf2f7;
+      vertical-align: middle;
+    }
+    .shop-table td:first-child { text-align: center; width: 36px; }
+    .shop-table tr:last-child td { border-bottom: none; }
+    .shop-table tr.checked td { opacity: 0.45; text-decoration: line-through; }
+    .shop-table tr.checked td:first-child { text-decoration: none; }
+    .shop-table input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: var(--primary);
+    }
+    .shop-table .qty { font-weight: 700; color: var(--primary-dark); white-space: nowrap; }
+    .shop-table .note { font-size: 0.76rem; color: var(--text-muted); }
+    .reset-btn {
+      margin-top: 10px;
+      padding: 7px 16px;
+      font-size: 0.82rem;
+      border: 1px solid var(--primary-light);
+      border-radius: 6px;
+      background: var(--bg);
+      color: var(--primary-dark);
+      cursor: pointer;
+      transition: background 0.14s;
+    }
+    .reset-btn:hover { background: var(--primary-light); }
+    .progress-bar-wrap {
+      margin: 8px 0 16px;
+      background: #e9f0f8;
+      border-radius: 20px;
+      height: 8px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 8px;
+      background: var(--primary);
+      border-radius: 20px;
+      transition: width 0.3s;
+    }
+    .progress-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .section-group-label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      padding: 10px 10px 4px;
+      background: #f8fafc;
+      border-bottom: 1px solid #edf2f7;
+    }
+    .ls-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-style: italic;
+      padding: 8px 0 0;
+    }
+  </style>
+</head>
+<body data-page="einkaufsliste">
+
+  <main class="main" id="main">
+
+      <div class="page-hero">
+        <div class="page-hero-meta">Planung &nbsp;·&nbsp; Norwegen 2026</div>
+        <h1 class="page-hero-title">🛒 Einkaufsliste</h1>
+        <p class="page-hero-subtitle">Trockenwaren &nbsp;·&nbsp; Frühstück &nbsp;·&nbsp; Konserven &nbsp;·&nbsp; Notfallvorrat</p>
+      </div>
+
+      <div class="section-tabs">
+        <a href="#trockenwaren" class="section-tab">🌾 Trockenwaren</a>
+        <a href="#fruehstueck" class="section-tab">☕ Frühstück</a>
+        <a href="#konserven" class="section-tab">🥫 Konserven</a>
+        <a href="#notfall" class="section-tab">🆘 Notfallvorrat</a>
+        <a href="#gewuerze" class="section-tab">🧂 Gewürze &amp; Co.</a>
+      </div>
+
+      <div class="page-sections">
+
+        <!-- ── Trockenwaren ── -->
+        <details class="accordion" id="trockenwaren">
+          <summary>
+            <span class="accordion-icon">🌾</span>
+            <span class="accordion-title">Trockenwaren</span>
+            <span class="accordion-chevron">›</span>
+          </summary>
+          <div class="accordion-body">
+            <p class="poi-desc" style="margin-bottom: 10px;">Mengen für 2 Personen, 4 Wochen. Alles <strong>in Deutschland kaufen</strong> — viel günstiger als in Norwegen.</p>
+            <div id="progress-trockenwaren" class="progress-label">0 von 0 abgehakt</div>
+            <div class="progress-bar-wrap"><div class="progress-bar" id="bar-trockenwaren" style="width:0%"></div></div>
+            <table class="shop-table" id="table-trockenwaren">
+              <thead>
+                <tr><th>✓</th><th>Artikel</th><th>Menge</th><th>Hinweis</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><input type="checkbox" data-group="trockenwaren"></td><td>Spaghetti / Pasta</td><td class="qty">3 kg</td><td class="note">verschiedene Sorten</td></tr>
+                <tr><td><input type="checkbox" data-group="trockenwaren"></td><td>Kurze Pasta (Penne, Fusilli)</td><td class="qty">1 kg</td><td class="note">für Pfannennudeln</td></tr>
+                <tr><td><input type="checkbox" data-group="trockenwaren"></td><td>Reis (Langkorn)</td><td class="qty">2 kg</td><td class="note">Basmati od. Jasmin</td></tr>
+                <tr><td><input type="checkbox" data-group="trockenwaren"></td><td>Couscous</td><td class="qty">1 kg</td><td class="note">kein Kochen nötig</td></tr>
+                <tr><td><input type="checkbox" data-group="trockenwaren"></td><td>Rote Linsen</td><td class="qty">750 g</td><td class="note">kein Einweichen nötig</td></tr>
+                <tr><td><input type="checkbox" data-group="trockenwaren"></td><td>Müsli</td><td class="qty">2 kg</td><td class="note">Frühstück Grundlage</td></tr>
+                <tr><td><input type="checkbox" data-group="trockenwaren"></td><td>Haferflocken</td><td class="qty">1 kg</td><td class="note">Porridge bei schlechtem Wetter</td></tr>
+                <tr><td><input type="checkbox" data-group="trockenwaren"></td><td>Tortilla-Wraps</td><td class="qty">3 × 8 Stück</td><td class="note">lange haltbar (mind. 4 Wochen)</td></tr>
+                <tr><td><input type="checkbox" data-group="trockenwaren"></td><td>Knäckebrot / Wasa</td><td class="qty">3 Packungen</td><td class="note">Frühstück &amp; Snack</td></tr>
+              </tbody>
+            </table>
+            <button class="reset-btn" data-reset="trockenwaren">↺ Alle zurücksetzen</button>
+            <p class="ls-note" id="ls-note-trockenwaren"></p>
+          </div>
+        </details>
+
+        <!-- ── Frühstück ── -->
+        <details class="accordion" id="fruehstueck">
+          <summary>
+            <span class="accordion-icon">☕</span>
+            <span class="accordion-title">Frühstück &amp; Heißgetränke</span>
+            <span class="accordion-chevron">›</span>
+          </summary>
+          <div class="accordion-body">
+            <p class="poi-desc" style="margin-bottom: 10px;">Kaffee, Tee und Aufstriche in Deutschland kaufen — in Norwegen 2–3× teurer.</p>
+            <div id="progress-fruehstueck" class="progress-label">0 von 0 abgehakt</div>
+            <div class="progress-bar-wrap"><div class="progress-bar" id="bar-fruehstueck" style="width:0%"></div></div>
+            <table class="shop-table" id="table-fruehstueck">
+              <thead>
+                <tr><th>✓</th><th>Artikel</th><th>Menge</th><th>Hinweis</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><input type="checkbox" data-group="fruehstueck"></td><td>Kaffeepads / gemahlen</td><td class="qty">500 g</td><td class="note">für 31 Tage, 2 Tassen/Person</td></tr>
+                <tr><td><input type="checkbox" data-group="fruehstueck"></td><td>Tee (Schwarz &amp; Kräuter)</td><td class="qty">2 × 50 Btl.</td><td class="note">für abends &amp; kalte Tage</td></tr>
+                <tr><td><input type="checkbox" data-group="fruehstueck"></td><td>Zucker</td><td class="qty">500 g</td><td class="note">für Kaffee &amp; Backen</td></tr>
+                <tr><td><input type="checkbox" data-group="fruehstueck"></td><td>Marmelade (versch. Sorten)</td><td class="qty">3 Gläser</td><td class="note">Erdbeere, Aprikose, Blaubeere</td></tr>
+                <tr><td><input type="checkbox" data-group="fruehstueck"></td><td>Nuss-Nougat-Creme</td><td class="qty">1 Glas (450 g)</td><td class="note">Klassiker für unterwegs</td></tr>
+                <tr><td><input type="checkbox" data-group="fruehstueck"></td><td>Honig</td><td class="qty">1 Glas (500 g)</td><td class="note">für Porridge &amp; Tee</td></tr>
+                <tr><td><input type="checkbox" data-group="fruehstueck"></td><td>Erdnussbutter</td><td class="qty">1 Glas</td><td class="note">Snack &amp; Frühstück</td></tr>
+                <tr><td><input type="checkbox" data-group="fruehstueck"></td><td>Milchpulver</td><td class="qty">400 g</td><td class="note">Backup falls keine frische Milch verfügbar</td></tr>
+              </tbody>
+            </table>
+            <button class="reset-btn" data-reset="fruehstueck">↺ Alle zurücksetzen</button>
+            <p class="ls-note" id="ls-note-fruehstueck"></p>
+          </div>
+        </details>
+
+        <!-- ── Konserven ── -->
+        <details class="accordion" id="konserven">
+          <summary>
+            <span class="accordion-icon">🥫</span>
+            <span class="accordion-title">Konserven &amp; Fertigprodukte</span>
+            <span class="accordion-chevron">›</span>
+          </summary>
+          <div class="accordion-body">
+            <p class="poi-desc" style="margin-bottom: 10px;">Die Grundlage aller 10 Gerichte. Komplett vorab in Deutschland kaufen und im Camper verstauen.</p>
+            <div id="progress-konserven" class="progress-label">0 von 0 abgehakt</div>
+            <div class="progress-bar-wrap"><div class="progress-bar" id="bar-konserven" style="width:0%"></div></div>
+            <table class="shop-table" id="table-konserven">
+              <thead>
+                <tr><th>✓</th><th>Artikel</th><th>Menge</th><th>Hinweis</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><input type="checkbox" data-group="konserven"></td><td>Gehackte Tomaten (400 g)</td><td class="qty">8 Dosen</td><td class="note">Basis Spaghetti, Suppen</td></tr>
+                <tr><td><input type="checkbox" data-group="konserven"></td><td>Tomatenmark (Tube)</td><td class="qty">4 Tuben</td><td class="note">intensiver Tomatengeschmack</td></tr>
+                <tr><td><input type="checkbox" data-group="konserven"></td><td>Kokosmilch (400 ml)</td><td class="qty">5 Dosen</td><td class="note">für Curry (Gericht 2)</td></tr>
+                <tr><td><input type="checkbox" data-group="konserven"></td><td>Kichererbsen (400 g)</td><td class="qty">4 Dosen</td><td class="note">Curry, Couscous</td></tr>
+                <tr><td><input type="checkbox" data-group="konserven"></td><td>Kidneybohnen (400 g)</td><td class="qty">3 Dosen</td><td class="note">mexikan. Bohnenpfanne (Gericht 9)</td></tr>
+                <tr><td><input type="checkbox" data-group="konserven"></td><td>Mais (340 g)</td><td class="qty">3 Dosen</td><td class="note">für Wraps, Bohnenpfanne</td></tr>
+                <tr><td><input type="checkbox" data-group="konserven"></td><td>Thunfisch (185 g)</td><td class="qty">5 Dosen</td><td class="note">in Öl oder Wasser</td></tr>
+                <tr><td><input type="checkbox" data-group="konserven"></td><td>Corned Beef / Luncheon Meat</td><td class="qty">2 Dosen</td><td class="note">Backup für Bolognese</td></tr>
+                <tr><td><input type="checkbox" data-group="konserven"></td><td>Gemüsemais oder Erbsen (TK)</td><td class="qty">1 kg</td><td class="note">einfrieren, portionsweise nutzen</td></tr>
+                <tr><td><input type="checkbox" data-group="konserven"></td><td>Currypaste (Glas)</td><td class="qty">2 Gläser</td><td class="note">rot oder gelb</td></tr>
+                <tr><td><input type="checkbox" data-group="konserven"></td><td>Gemüsebrühe (Würfel/Pulver)</td><td class="qty">2 Packungen</td><td class="note">für Suppen</td></tr>
+                <tr><td><input type="checkbox" data-group="konserven"></td><td>Sojasauce (kleine Flasche)</td><td class="qty">1×</td><td class="note">für Nudelpfanne, Curry</td></tr>
+              </tbody>
+            </table>
+            <button class="reset-btn" data-reset="konserven">↺ Alle zurücksetzen</button>
+            <p class="ls-note" id="ls-note-konserven"></p>
+          </div>
+        </details>
+
+        <!-- ── Notfallvorrat ── -->
+        <details class="accordion" id="notfall">
+          <summary>
+            <span class="accordion-icon">🆘</span>
+            <span class="accordion-title">Notfallvorrat &amp; Snacks</span>
+            <span class="accordion-chevron">›</span>
+          </summary>
+          <div class="accordion-body">
+            <p class="poi-desc" style="margin-bottom: 10px;">Für Tage ohne Supermarkt in der Nähe, Schlechtwetter-Pausen oder lange Wandertage.</p>
+            <div id="progress-notfall" class="progress-label">0 von 0 abgehakt</div>
+            <div class="progress-bar-wrap"><div class="progress-bar" id="bar-notfall" style="width:0%"></div></div>
+            <table class="shop-table" id="table-notfall">
+              <thead>
+                <tr><th>✓</th><th>Artikel</th><th>Menge</th><th>Hinweis</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><input type="checkbox" data-group="notfall"></td><td>Instant-Nudelsuppen</td><td class="qty">6 Packungen</td><td class="note">Backup-Abendessen</td></tr>
+                <tr><td><input type="checkbox" data-group="notfall"></td><td>Fertigsuppen (Tetrapak)</td><td class="qty">4 Stück</td><td class="note">Tomaten, Erbse, Kartoffel</td></tr>
+                <tr><td><input type="checkbox" data-group="notfall"></td><td>Energieriegel / Müsliriegel</td><td class="qty">20 Stück</td><td class="note">Wandertage, lange Fahrten</td></tr>
+                <tr><td><input type="checkbox" data-group="notfall"></td><td>Studentenfutter / Nüsse</td><td class="qty">500 g</td><td class="note">Snack im Auto</td></tr>
+                <tr><td><input type="checkbox" data-group="notfall"></td><td>Schokolade</td><td class="qty">5 Tafeln</td><td class="note">Moralbooster bei Regen</td></tr>
+                <tr><td><input type="checkbox" data-group="notfall"></td><td>Kekse / Salzcracker</td><td class="qty">3 Packungen</td><td class="note">Snack, auch zu Suppe</td></tr>
+                <tr><td><input type="checkbox" data-group="notfall"></td><td>Getrockn. Früchte (Rosinen, Aprikosen)</td><td class="qty">400 g</td><td class="note">Müsli, Couscous, Snack</td></tr>
+                <tr><td><input type="checkbox" data-group="notfall"></td><td>Popcorn (ungesalzen)</td><td class="qty">2 Packungen</td><td class="note">Abend im Camper</td></tr>
+              </tbody>
+            </table>
+            <button class="reset-btn" data-reset="notfall">↺ Alle zurücksetzen</button>
+            <p class="ls-note" id="ls-note-notfall"></p>
+          </div>
+        </details>
+
+        <!-- ── Gewürze & Co. ── -->
+        <details class="accordion" id="gewuerze">
+          <summary>
+            <span class="accordion-icon">🧂</span>
+            <span class="accordion-title">Gewürze, Öle &amp; Sonstiges</span>
+            <span class="accordion-chevron">›</span>
+          </summary>
+          <div class="accordion-body">
+            <p class="poi-desc" style="margin-bottom: 10px;">Kleinkram, der schnell vergessen wird — und in Norwegen unverhältnismäßig teuer ist.</p>
+            <div id="progress-gewuerze" class="progress-label">0 von 0 abgehakt</div>
+            <div class="progress-bar-wrap"><div class="progress-bar" id="bar-gewuerze" style="width:0%"></div></div>
+            <table class="shop-table" id="table-gewuerze">
+              <thead>
+                <tr><th>✓</th><th>Artikel</th><th>Menge</th><th>Hinweis</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><input type="checkbox" data-group="gewuerze"></td><td>Olivenöl</td><td class="qty">1 Liter</td><td class="note">in kleiner Flasche für Camper</td></tr>
+                <tr><td><input type="checkbox" data-group="gewuerze"></td><td>Salz &amp; Pfeffer</td><td class="qty">je 1×</td><td class="note">Mühlen oder Streuer</td></tr>
+                <tr><td><input type="checkbox" data-group="gewuerze"></td><td>Knoblauchpulver</td><td class="qty">1 Glas</td><td class="note">kein frischer Knoblauch nötig</td></tr>
+                <tr><td><input type="checkbox" data-group="gewuerze"></td><td>Paprikapulver (süß &amp; scharf)</td><td class="qty">2 Gläser</td><td class="note">vielseitig einsetzbar</td></tr>
+                <tr><td><input type="checkbox" data-group="gewuerze"></td><td>Kreuzkümmel / Cumin</td><td class="qty">1 Glas</td><td class="note">für Curry, Linsen</td></tr>
+                <tr><td><input type="checkbox" data-group="gewuerze"></td><td>Oregano &amp; Basilikum (getr.)</td><td class="qty">je 1 Glas</td><td class="note">für Pasta-Saucen</td></tr>
+                <tr><td><input type="checkbox" data-group="gewuerze"></td><td>Senf</td><td class="qty">1 Tube</td><td class="note">für Kartoffelsuppe, Wraps</td></tr>
+                <tr><td><input type="checkbox" data-group="gewuerze"></td><td>Essig (Wein- oder Apfelessig)</td><td class="qty">1 kleine Fl.</td><td class="note">für Dressings</td></tr>
+                <tr><td><input type="checkbox" data-group="gewuerze"></td><td>Mehl</td><td class="qty">500 g</td><td class="note">als Bindemittel, Pfannkuchen</td></tr>
+                <tr><td><input type="checkbox" data-group="gewuerze"></td><td>Backpulver</td><td class="qty">1 Packung</td><td class="note">für Pfannkuchen / spontanes Backen</td></tr>
+                <tr><td><input type="checkbox" data-group="gewuerze"></td><td>Spülmittel &amp; Schwamm</td><td class="qty">1×</td><td class="note">Küchenhygiene Camper</td></tr>
+                <tr><td><input type="checkbox" data-group="gewuerze"></td><td>Frischhaltefolie / Alufolie</td><td class="qty">1× je</td><td class="note">Reste aufbewahren</td></tr>
+              </tbody>
+            </table>
+            <button class="reset-btn" data-reset="gewuerze">↺ Alle zurücksetzen</button>
+            <p class="ls-note" id="ls-note-gewuerze"></p>
+          </div>
+        </details>
+
+      </div>
+  </main>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+  (function () {
+    var LS_KEY = 'norwegen-einkaufsliste-v1';
+    var supportsLS = (function () {
+      try { localStorage.setItem('_t', '1'); localStorage.removeItem('_t'); return true; }
+      catch (e) { return false; }
+    }());
+
+    var groups = ['trockenwaren', 'fruehstueck', 'konserven', 'notfall', 'gewuerze'];
+
+    function getState() {
+      if (!supportsLS) return {};
+      try { return JSON.parse(localStorage.getItem(LS_KEY) || '{}'); } catch (e) { return {}; }
+    }
+
+    function saveState(state) {
+      if (!supportsLS) return;
+      try { localStorage.setItem(LS_KEY, JSON.stringify(state)); } catch (e) {}
+    }
+
+    function updateProgress(group) {
+      var boxes = document.querySelectorAll('input[data-group="' + group + '"]');
+      var total = boxes.length;
+      var done = 0;
+      boxes.forEach(function (cb) { if (cb.checked) done++; });
+      var pct = total ? Math.round(done / total * 100) : 0;
+      var bar = document.getElementById('bar-' + group);
+      var lbl = document.getElementById('progress-' + group);
+      if (bar) bar.style.width = pct + '%';
+      if (lbl) lbl.textContent = done + ' von ' + total + ' abgehakt (' + pct + ' %)';
+    }
+
+    function applyRowStyle(cb) {
+      var row = cb.closest('tr');
+      if (row) {
+        if (cb.checked) row.classList.add('checked');
+        else row.classList.remove('checked');
+      }
+    }
+
+    function init() {
+      var state = getState();
+
+      // Show persistence note
+      groups.forEach(function (g) {
+        var note = document.getElementById('ls-note-' + g);
+        if (note) {
+          note.textContent = supportsLS
+            ? '✓ Fortschritt wird auf diesem Gerät gespeichert.'
+            : 'Hinweis: Speichern nicht verfügbar – Häkchen gehen beim Schließen verloren.';
+        }
+      });
+
+      // Restore checkboxes
+      document.querySelectorAll('input[type="checkbox"][data-group]').forEach(function (cb) {
+        var group = cb.dataset.group;
+        var idx = Array.from(document.querySelectorAll('input[data-group="' + group + '"]')).indexOf(cb);
+        var key = group + '_' + idx;
+        if (state[key]) {
+          cb.checked = true;
+          applyRowStyle(cb);
+        }
+
+        cb.addEventListener('change', function () {
+          applyRowStyle(cb);
+          var s = getState();
+          s[key] = cb.checked;
+          if (!cb.checked) delete s[key];
+          saveState(s);
+          updateProgress(group);
+        });
+      });
+
+      // Reset buttons
+      document.querySelectorAll('.reset-btn').forEach(function (btn) {
+        var group = btn.dataset.reset;
+        btn.addEventListener('click', function () {
+          document.querySelectorAll('input[data-group="' + group + '"]').forEach(function (cb) {
+            cb.checked = false;
+            applyRowStyle(cb);
+          });
+          var s = getState();
+          Object.keys(s).forEach(function (k) { if (k.startsWith(group + '_')) delete s[k]; });
+          saveState(s);
+          updateProgress(group);
+        });
+      });
+
+      // Initial progress render
+      groups.forEach(updateProgress);
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+  }());
+  </script>
+</body>
+</html>

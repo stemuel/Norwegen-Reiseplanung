@@ -8,19 +8,9 @@
 </head>
 <body data-page="geiranger">
 
-  <header class="mobile-header">
-    <button class="hamburger" id="menuBtn" aria-label="Navigation öffnen">☰</button>
-    <span class="mobile-header-title">Geiranger</span>
-  </header>
-
-  <div class="app">
-    <nav class="sidebar" id="sidebar" aria-label="Stopp-Navigation"></nav>
-    <div class="overlay" id="overlay" aria-hidden="true"></div>
-
-    <main class="main">
+  <main class="main" id="main">
 
       <div class="page-hero">
-        <a href="../index.html" class="back-link">← Zur Übersicht</a>
         <div class="page-hero-meta">Tag 18–19 &nbsp;·&nbsp; 28.–29. August 2026</div>
         <h1 class="page-hero-title">🇳🇴 Geiranger</h1>
         <p class="page-hero-subtitle">UNESCO-Fjord &nbsp;·&nbsp; Sieben Schwestern &nbsp;·&nbsp; Dalsnibba</p>
@@ -28,7 +18,8 @@
 
       <div class="hero-image-wrapper">
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Geirangerfjord_.jpg/800px-Geirangerfjord_.jpg"
+          src="../images/geiranger.jpg"
+          onerror="this.style.display='none';this.parentElement.classList.add('no-image')"
           alt="Geirangerfjord mit türkisem Wasser und steilen Bergwänden – UNESCO-Weltnaturerbe"
           class="hero-image"
           loading="lazy"
@@ -36,6 +27,7 @@
         <p class="hero-image-credit">
           Foto: <a href="https://commons.wikimedia.org/wiki/File:Geirangerfjord_.jpg" target="_blank" rel="noopener">Geirangerfjord, Wikimedia Commons</a> &nbsp;·&nbsp; CC BY-SA
         </p>
+        <div class="hero-placeholder">Geirangerfjord</div>
       </div>
 
       <nav class="page-nav" id="pageNav" aria-label="Zwischen Stopps navigieren"></nav>
@@ -51,7 +43,7 @@
       <div class="page-sections">
 
         <!-- ── Sehenswürdigkeiten ── -->
-        <details class="accordion" id="sehenswuerdigkeiten" open>
+        <details class="accordion" id="sehenswuerdigkeiten">
           <summary>
             <span class="accordion-icon">🏛️</span>
             <span class="accordion-title">Sehenswürdigkeiten</span>
@@ -305,8 +297,7 @@
         </details>
 
       </div>
-    </main>
-  </div>
+  </main>
 
   <script src="../js/data.js"></script>
   <script src="../js/app.js"></script>
